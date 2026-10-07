@@ -2,22 +2,21 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 
-public class Layout implements ActionListener {
+public class Layout {
     private JFrame mainFrame;
     private JPanel controlPanel;
     private JTextField ia; //text input field
     private JTextArea oa; //text output area
     private int WIDTH=800;
     private int HEIGHT=700;
-
+//
 
     public Layout() {
         prepareGUI();
     }
 
     public static void main(String[] args) {
-        Layout Layout = new Layout();
-        Layout.showEventDemo();
+        Layout layout = new Layout();
     }
 
     private void prepareGUI() {
@@ -38,6 +37,7 @@ public class Layout implements ActionListener {
 
         controlPanel = new JPanel();
         controlPanel.setLayout(new FlowLayout(FlowLayout.CENTER));
+        addButtons();
         topPanel.add(controlPanel, BorderLayout.CENTER);
 
         oa = new JTextArea();
@@ -53,7 +53,7 @@ public class Layout implements ActionListener {
         mainFrame.setVisible(true);
     }
 
-    private void showEventDemo() {
+    private void addButtons() {
         JButton submitButton = new JButton("Submit");
         submitButton.setActionCommand("Submit");
         submitButton.addActionListener(new ButtonClickListener());
@@ -68,11 +68,6 @@ public class Layout implements ActionListener {
         controlPanel.add(addLineBreakButton);
 
         mainFrame.setVisible(true);// always have to set mainframe visibility to true when changing something on it
-    }
-
-    @Override
-    public void actionPerformed(ActionEvent e) {
-
     }
 
     private class ButtonClickListener implements ActionListener {
