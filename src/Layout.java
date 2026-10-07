@@ -42,6 +42,8 @@ public class Layout {
 
         oa = new JTextArea();
         oa.setEditable(false);
+        Font customFont = new Font("Arial", Font.BOLD, 18);
+        oa.setFont(customFont);
         JScrollPane scrollPane = new JScrollPane(oa);
         mainFrame.add(scrollPane, BorderLayout.CENTER);
 
@@ -75,15 +77,16 @@ public class Layout {
             String command = e.getActionCommand();
 
             if (command.equals("Submit")) {
-                oa.append(ia.getText() + "\n");
+                oa.append(ia.getText() + "\n");// googled how to go down to the next line: https://stackoverflow.com/questions/20706206/insert-line-break-in-java
             }
             else if (command.equals("Reset")) {
                 ia.setText("");
                 oa.setText("");
             }
-            else {
-                oa.append("---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------\n");
+            else if (command.equals("AddLineBreak")){
+                oa.append("------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------\n");
             }
+
         }
     }
 }
